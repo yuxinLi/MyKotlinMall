@@ -12,6 +12,7 @@ import rx.functions.Func1
 
 class BaseFunc<T>: Func1<BaseResp<T> , rx.Observable<T>>{
     override fun call(t: BaseResp<T>):rx.Observable<T>{
+
         if (t.status != ResultCode.SUCCESS){
             return rx.Observable.error(BaseException(t.status , t.message))
         }
