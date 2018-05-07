@@ -1,6 +1,7 @@
 package com.example.baselibrary.injection.module
 
 import com.trello.rxlifecycle.LifecycleProvider
+import dagger.Module
 import dagger.Provides
 
 /**
@@ -8,6 +9,7 @@ import dagger.Provides
  * 作    者：liyx@13322.com
  * 时    间：2018/5/7
  */
+@Module
 class LifecycleProviderModule(private val lifecycleProvider: LifecycleProvider<*>){
 
     @Provides
