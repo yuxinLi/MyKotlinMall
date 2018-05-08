@@ -4,6 +4,7 @@ import com.example.baselibrary.injection.PerComponentScope
 import com.example.baselibrary.injection.component.ActivityComponent
 import com.example.usercenter.injection.module.UploadModule
 import com.example.usercenter.injection.module.UserModule
+import com.example.usercenter.ui.activity.LoginActivity
 import dagger.Component
 
 /**
@@ -17,7 +18,7 @@ import dagger.Component
 interface UserComponent{
 
 //    fun inject(activity:RegisterActivity)
-//    fun inject(activity:LoginActivity)
+    fun inject(activity: LoginActivity)
 //    fun inject(activity:ForgetPwdActivity)
 //    fun inject(activity:ResetPwdActivity)
 //    fun inject(activity:UserInfoActivity)

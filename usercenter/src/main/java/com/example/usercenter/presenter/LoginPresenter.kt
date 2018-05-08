@@ -19,7 +19,7 @@ class LoginPresenter @Inject constructor(): BasePresenter<LoginView>() {
     lateinit var userService: UserService
 
     fun login(mobile: String , pwd: String , pushId: String){
-        if(checkNetWork()){
+        if(!checkNetWork()){
             return
         }
         mView.showLoading()

@@ -11,6 +11,8 @@ import com.example.provider.PushProvider
 import com.example.provider.router.RouterPath
 import com.example.usercenter.R
 import com.example.usercenter.data.protocol.UserInfo
+import com.example.usercenter.injection.component.DaggerUserComponent
+import com.example.usercenter.injection.module.UserModule
 import com.example.usercenter.presenter.LoginPresenter
 import com.example.usercenter.presenter.view.LoginView
 import kotlinx.android.synthetic.main.activity_login.*
@@ -40,7 +42,7 @@ class LoginActivity: BaseMvpActivity<LoginPresenter>() , LoginView , View.OnClic
 
     private fun initView() {
         mLoginBtn.enable(mMobileEt , {isBtnEnable()})
-        mLoginBtn.enable(mPwdEt , {isBtnEnable()})
+//        mLoginBtn.enable(mPwdEt , {isBtnEnable()})
 
         mLoginBtn.onClick(this)
 //        mHeaderBar.rightV
@@ -50,12 +52,20 @@ class LoginActivity: BaseMvpActivity<LoginPresenter>() , LoginView , View.OnClic
     }
 
     private fun isBtnEnable(): Boolean{
-        return mMobileEt.text.isNotEmpty().not() &&
-                mPwdEt.text.isNotEmpty().not()
+        return mMobileEt.text.isNotEmpty() &&
+                mPwdEt.text.isNotEmpty()
     }
 
 
     override fun injectComponent() {
+
+        DaggerUserComponent.builder()
+                .activityComponent(mActivityComponent)
+                .userModule(UserModule())
+                .build()
+                .inject(this)
+        mPresenter.mView = this
+
     }
 
     override fun onLoginResule(result: UserInfo) {

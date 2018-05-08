@@ -17,7 +17,7 @@ import javax.inject.Inject
  * 作    者：liyx@13322.com
  * 时    间：2018/5/7
  */
-abstract open class BaseMvpActivity<T: BasePresenter<*>>: BaseActivity() , BaseView {
+abstract class BaseMvpActivity<T: BasePresenter<*>>: BaseActivity() , BaseView {
 
     @Inject
     lateinit var mPresenter: T
